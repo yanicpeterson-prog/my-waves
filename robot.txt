@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://service-wave.online/sitemap.xml
+Sitemap: http://service-wave.online/sitemap.xml
