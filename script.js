@@ -50,22 +50,47 @@ if (language) {
 // ENVOI DU FORMULAIRE
 // ================================
 
-document.getElementById("formulaire").addEventListener("submit", function (e) {
+document.getElementById("formulaire").addEventListener("submit", async function (e) {
 
     e.preventDefault();
 
     // Vérification du reCAPTCHA
 
-    const response = grecaptcha.getResponse();
+    const token = document.querySelector(
+    '[name="cf-turnstile-response"]'
+).value;
 
-    if (response.length === 0) {
+if (!token) {
 
-        alert("Veuillez confirmer que vous n'êtes pas un robot.");
+    alert("Veuillez confirmer que vous n'êtes pas un robot.");
 
-        return;
+    return;
 
+}
+
+// Vérification côté serveur
+const verify = await fetch(
+    "https://turnstile-verify.yanicpeterson.workers.dev",
+    {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            token: token
+        })
     }
+);
 
+const result = await verify.json();
+
+if (!result.success) {
+
+    alert("Captcha invalide.");
+
+    return;
+
+}
     // Données du formulaire
 
     const params = {
@@ -92,7 +117,7 @@ document.getElementById("formulaire").addEventListener("submit", function (e) {
 
             // Réinitialise le reCAPTCHA
 
-            grecaptcha.reset();
+           turnstile.reset();
 
         })
 
